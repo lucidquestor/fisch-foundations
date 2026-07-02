@@ -28,9 +28,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-ivory text-charcoal antialiased">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className="bg-ivory font-sans text-charcoal antialiased">
         <Header />
-        <main>{children}</main>
+        <main className="relative z-0">{children}</main>
         <Footer />
       </body>
     </html>

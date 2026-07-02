@@ -9,7 +9,7 @@ export function Process() {
           eyebrow="How We Work"
           title={
             <>
-              The <em>Process</em>
+              The <span className="section-title-accent">Process</span>
             </>
           }
           dark

@@ -7,10 +7,11 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    scroll-padding-top: 5.5rem;
   }
 
   body {
-    @apply bg-ivory text-charcoal font-sans font-light;
+    @apply bg-ivory font-sans font-light text-charcoal;
   }
 }
 
@@ -43,8 +44,9 @@
     @apply font-display text-[clamp(2.2rem,4.5vw,3.6rem)] leading-none tracking-wide text-navy;
   }
 
-  .section-title em {
-    @apply not-italic text-crimson;
+  .section-title em,
+  .section-title-accent {
+    @apply not-italic font-normal text-crimson;
   }
 
   .section-intro {
@@ -56,7 +58,7 @@
   }
 
   .btn-ivory {
-    @apply btn-base bg-ivory text-navy shadow-[0_3px_0_0_rgba(0,0,0,0.2)] hover:bg-cream hover:shadow-[0_1px_0_0_rgba(0,0,0,0.2)] hover:translate-y-0.5;
+    @apply btn-base bg-ivory text-navy shadow-[0_3px_0_0_rgba(0,0,0,0.2)] hover:bg-cream hover:shadow-[0_2px_0_0_rgba(0,0,0,0.2)];
   }
 
   .btn-ghost {
@@ -64,7 +66,7 @@
   }
 
   .btn-primary {
-    @apply btn-base bg-navy text-ivory shadow-[0_3px_0_0_rgba(0,0,0,0.25)] hover:bg-navy-mid hover:shadow-[0_1px_0_0_rgba(0,0,0,0.25)] hover:translate-y-0.5;
+    @apply btn-base bg-navy text-ivory shadow-[0_3px_0_0_rgba(0,0,0,0.25)] hover:bg-navy-mid hover:shadow-[0_2px_0_0_rgba(0,0,0,0.25)];
   }
 
   .btn-outline {
@@ -72,7 +74,7 @@
   }
 
   .btn-ivory-solid {
-    @apply btn-base bg-ivory text-navy shadow-[0_3px_0_0_rgba(0,0,0,0.15)] hover:bg-cream hover:translate-y-0.5;
+    @apply btn-base bg-ivory text-navy shadow-[0_3px_0_0_rgba(0,0,0,0.15)] hover:bg-cream;
   }
 
   .btn-ghost-white {

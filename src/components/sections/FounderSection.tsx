@@ -20,14 +20,15 @@ export function FounderSection({ compact = false, hideTitle = false }: FounderSe
             eyebrow="Leadership"
             title={
               <>
-                Construction From a Developer&apos;s <em>Perspective</em>
+                Construction From a Developer&apos;s{" "}
+                <span className="section-title-accent">Perspective</span>
               </>
             }
           />
         )}
 
         <div className={`grid items-center gap-10 ${compact ? "lg:grid-cols-5" : "lg:grid-cols-2 lg:gap-16"}`}>
-          <div className={`relative ${compact ? "lg:col-span-2" : ""}`}>
+          <div className={`relative z-0 ${compact ? "lg:col-span-2" : ""}`}>
             <div className="aspect-[4/5] max-w-sm overflow-hidden bg-navy">
               <div className="flex h-full flex-col items-center justify-center p-8 text-center">
                 <span className="font-display text-6xl text-ivory/15">FF</span>
@@ -39,7 +40,7 @@ export function FounderSection({ compact = false, hideTitle = false }: FounderSe
                 </p>
               </div>
             </div>
-            <div className="absolute -bottom-4 -right-4 hidden h-20 w-20 bg-crimson sm:flex sm:items-center sm:justify-center">
+            <div className="absolute bottom-0 right-0 z-10 hidden h-20 w-20 bg-crimson sm:flex sm:items-center sm:justify-center">
               <span className="text-center font-display text-[0.65rem] leading-snug tracking-[0.12em] text-ivory/80">
                 Tri-
                 <br />

@@ -3,17 +3,17 @@ import { copy, siteImages } from "@/content/site";
 
 export function JobsiteBand() {
   return (
-    <section className="relative h-[42vh] min-h-[280px] max-h-[480px] w-full overflow-hidden md:h-[50vh]">
+    <section className="relative isolate h-[42vh] min-h-[280px] max-h-[480px] w-full overflow-hidden bg-navy md:h-[50vh]">
       <Image
         src={siteImages.jobsite}
         alt="Active construction site"
         fill
-        className="object-cover"
+        className="z-0 object-cover"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-navy/55" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-navy/55" />
       <div
-        className="absolute inset-0 opacity-30"
+        className="pointer-events-none absolute inset-0 z-[1] opacity-30"
         style={{
           backgroundImage: `
             repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 40px),
@@ -21,7 +21,7 @@ export function JobsiteBand() {
           `,
         }}
       />
-      <div className="absolute inset-0 flex items-center justify-center px-5 text-center">
+      <div className="absolute inset-0 z-[2] flex items-center justify-center px-5 text-center">
         <div>
           <p className="text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-gold-light">
             {copy.jobsite.eyebrow}

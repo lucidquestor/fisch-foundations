@@ -28,7 +28,7 @@ export function Services({ variant = "full" }: ServicesProps) {
           eyebrow="What We Build"
           title={
             <>
-              Our <em>Services</em>
+              Our <span className="section-title-accent">Services</span>
             </>
           }
           description={

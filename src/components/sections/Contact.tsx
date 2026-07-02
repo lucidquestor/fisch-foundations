@@ -55,7 +55,7 @@ export function Contact({ showHeading = true }: ContactProps) {
             eyebrow="Get In Touch"
             title={
               <>
-                Start Your <em>Project</em>
+                Start Your <span className="section-title-accent">Project</span>
               </>
             }
           />

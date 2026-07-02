@@ -63,7 +63,8 @@ export function About() {
               eyebrow="Our Approach"
               title={
                 <>
-                  A Developer&apos;s <em>Perspective</em>
+                  A Developer&apos;s{" "}
+                  <span className="section-title-accent">Perspective</span>
                 </>
               }
             />

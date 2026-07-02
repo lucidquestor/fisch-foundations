@@ -6,17 +6,19 @@ const heroProject = featuredProjects[0];
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] overflow-hidden bg-navy lg:min-h-screen">
-      <div
-        className="absolute inset-0 opacity-100"
-        style={{
-          backgroundImage: `
-            repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 48px),
-            repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 48px)
-          `,
-        }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/40 lg:via-navy/90 lg:to-transparent" />
+    <section className="relative isolate min-h-[90vh] overflow-hidden bg-navy lg:min-h-screen">
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 48px),
+              repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 48px)
+            `,
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/40 lg:via-navy/90 lg:to-transparent" />
+      </div>
 
       <div className="container-site relative z-10 grid min-h-[90vh] lg:min-h-screen lg:grid-cols-2 lg:items-stretch">
         <div className="flex flex-col justify-center px-5 py-28 md:px-10 lg:px-16 lg:py-32">
@@ -31,9 +33,9 @@ export function Hero() {
             <span className="text-crimson-muted">Endure.</span>
           </h1>
 
-        <p className="mt-5 max-w-md text-base font-normal leading-relaxed text-ivory/75 md:text-lg">
-          {copy.hero.subhead}
-        </p>
+          <p className="mt-5 max-w-md text-base font-normal leading-relaxed text-ivory/75 md:text-lg">
+            {copy.hero.subhead}
+          </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <Button href="/contact" variant="ivory">
@@ -44,12 +46,12 @@ export function Hero() {
             </Button>
           </div>
 
-        <p className="mt-10 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ivory/35">
-          {copy.hero.credibility}
-        </p>
+          <p className="mt-10 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ivory/35">
+            {copy.hero.credibility}
+          </p>
         </div>
 
-        <div className="relative hidden min-h-[420px] lg:block">
+        <div className="relative z-0 hidden min-h-[420px] bg-navy lg:block">
           {heroProject.image && (
             <Image
               src={heroProject.image}
@@ -60,9 +62,9 @@ export function Hero() {
               sizes="50vw"
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent" />
-          <div className="absolute inset-0 bg-navy/30" />
-          <div className="absolute bottom-0 left-0 right-0 border-t border-ivory/15 bg-navy/80 p-6 backdrop-blur-sm">
+          <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-navy via-navy/20 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 z-[1] bg-navy/30" />
+          <div className="absolute bottom-0 left-0 right-0 z-[2] border-t border-ivory/15 bg-navy/90 p-6">
             <p className="text-[0.65rem] uppercase tracking-[0.2em] text-gold-light">
               Featured Project
             </p>

@@ -39,10 +39,11 @@ export function Projects({ variant = "full", fullBleed = false }: ProjectsProps)
 
   const heading = (
     <SectionHeading
-      eyebrow="Project Experience"
+      eyebrow={isPreview && fullBleed ? "Selected Work" : "Portfolio"}
       title={
         <>
-          Project <em>Experience</em>
+          Project{" "}
+          <span className="section-title-accent">Experience</span>
         </>
       }
       description={
@@ -76,12 +77,12 @@ export function Projects({ variant = "full", fullBleed = false }: ProjectsProps)
 
   if (fullBleed && isPreview) {
     return (
-      <section className="bg-navy">
-        <div className="container-site px-5 pb-6 pt-14 md:px-10 lg:px-16">
+      <section className="relative isolate border-t border-ivory/10 bg-navy">
+        <div className="container-site relative z-10 px-5 pb-6 pt-16 md:px-10 md:pt-20 lg:px-16">
           {heading}
         </div>
-        {grid}
-        <div className="container-site px-5 py-10 text-center md:px-10 lg:px-16">
+        <div className="relative z-0">{grid}</div>
+        <div className="container-site relative z-10 px-5 py-10 text-center md:px-10 lg:px-16">
           <Button href="/projects" variant="ghost-white">
             View Full Portfolio
           </Button>
@@ -150,7 +151,7 @@ function ProjectCard({
   return (
     <article
       className={cn(
-        "group relative overflow-hidden bg-navy-mid",
+        "group relative isolate overflow-hidden bg-navy-mid",
         project.large || tall
           ? "sm:col-span-2 aspect-[16/9] lg:aspect-[2/1]"
           : "aspect-[4/3]",
@@ -161,18 +162,18 @@ function ProjectCard({
           src={project.image}
           alt={project.address}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          className="z-0 object-cover transition-transform duration-700 group-hover:scale-[1.03]"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
       ) : (
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-navy-mid to-navy">
+        <div className="absolute inset-0 z-0 flex items-center justify-center bg-gradient-to-br from-navy-mid to-navy">
           <span className="font-display text-5xl text-ivory/10">FF</span>
         </div>
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-navy/10" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-navy via-navy/40 to-navy/10" />
 
-      <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+      <div className="absolute inset-x-0 bottom-0 z-[2] p-5 md:p-6">
         <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-gold-light">
           {project.num}
         </p>

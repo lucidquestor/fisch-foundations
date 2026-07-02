@@ -11,7 +11,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-cream-deeper bg-ivory/95 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-[100] border-b border-cream-deeper bg-ivory">
       <div className="container-site flex items-center justify-between px-5 py-3 md:px-10 lg:px-16">
         <Link href="/" className="group leading-tight">
           <span className="block font-display text-xl tracking-wide text-navy">
