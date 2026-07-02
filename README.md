@@ -8,16 +8,20 @@ Built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**, optimized for d
 
 ```
 src/
-├── app/              # Next.js App Router (pages, layout, API routes)
+├── app/
+│   ├── page.tsx          # Home (short intro)
+│   ├── services/         # Full services + process
+│   ├── projects/         # Full portfolio
+│   ├── about/            # Founder story + approach
+│   └── contact/          # Inquiry form
 ├── components/
-│   ├── layout/       # Header, Footer
-│   ├── sections/     # Page sections (Hero, Services, Contact, etc.)
-│   └── ui/           # Reusable UI primitives
-├── content/          # All site copy and data (single source of truth)
-└── lib/              # Utilities
+│   ├── layout/           # Header, Footer
+│   ├── sections/         # Reusable page sections
+│   └── ui/
+└── content/site.ts       # All copy, projects, founder info
 ```
 
-All marketing copy lives in `src/content/site.ts` — update text there without touching components.
+All marketing copy lives in `src/content/site.ts`. Set `founder.name` there when ready to show the principal by name.
 
 ## Getting started
 

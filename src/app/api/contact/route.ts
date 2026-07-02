@@ -6,10 +6,22 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
-export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
+const MAX_FILE_BYTES = 10 * 1024 * 1024;
 
-  if (!body?.firstName || !body?.lastName || !body?.email || !body?.details) {
+export async function POST(request: Request) {
+  const formData = await request.formData().catch(() => null);
+
+  if (!formData) {
+    return NextResponse.json({ error: "Invalid form submission." }, { status: 400 });
+  }
+
+  const firstName = String(formData.get("firstName") ?? "").trim();
+  const lastName = String(formData.get("lastName") ?? "").trim();
+  const email = String(formData.get("email") ?? "").trim();
+  const details = String(formData.get("details") ?? "").trim();
+  const projectLocation = String(formData.get("projectLocation") ?? "").trim();
+
+  if (!firstName || !lastName || !email || !details || !projectLocation) {
     return NextResponse.json(
       { error: "Please fill in all required fields." },
       { status: 400 },
@@ -17,13 +29,45 @@ export async function POST(request: Request) {
   }
 
   const inquiry = {
-    firstName: String(body.firstName).trim(),
-    lastName: String(body.lastName).trim(),
-    email: String(body.email).trim(),
-    phone: body.phone ? String(body.phone).trim() : "",
-    projectType: body.projectType ? String(body.projectType).trim() : "",
-    details: String(body.details).trim(),
+    firstName,
+    lastName,
+    email,
+    phone: String(formData.get("phone") ?? "").trim(),
+    projectLocation,
+    projectType: String(formData.get("projectType") ?? "").trim(),
+    budgetRange: String(formData.get("budgetRange") ?? "").trim(),
+    desiredStart: String(formData.get("desiredStart") ?? "").trim(),
+    plansAvailable: String(formData.get("plansAvailable") ?? "").trim(),
+    details,
   };
+
+  const file = formData.get("plans");
+  let attachment: { filename: string; content: Buffer } | undefined;
+
+  if (file instanceof File && file.size > 0) {
+    if (file.size > MAX_FILE_BYTES) {
+      return NextResponse.json(
+        { error: "File must be 10 MB or smaller." },
+        { status: 400 },
+      );
+    }
+    const buffer = Buffer.from(await file.arrayBuffer());
+    attachment = { filename: file.name, content: buffer };
+  }
+
+  const emailBody = [
+    `Name: ${inquiry.firstName} ${inquiry.lastName}`,
+    `Email: ${inquiry.email}`,
+    `Phone: ${inquiry.phone || "Not provided"}`,
+    `Location: ${inquiry.projectLocation}`,
+    `Project Type: ${inquiry.projectType || "Not specified"}`,
+    `Budget: ${inquiry.budgetRange || "Not specified"}`,
+    `Desired Start: ${inquiry.desiredStart || "Not specified"}`,
+    `Plans Available: ${inquiry.plansAvailable || "Not specified"}`,
+    "",
+    "Project Details:",
+    inquiry.details,
+  ].join("\n");
 
   if (!resend) {
     console.info("[contact inquiry — no RESEND_API_KEY]", inquiry);
@@ -39,15 +83,8 @@ export async function POST(request: Request) {
     to: [to],
     replyTo: inquiry.email,
     subject: `New inquiry from ${inquiry.firstName} ${inquiry.lastName}`,
-    text: [
-      `Name: ${inquiry.firstName} ${inquiry.lastName}`,
-      `Email: ${inquiry.email}`,
-      `Phone: ${inquiry.phone || "Not provided"}`,
-      `Project Type: ${inquiry.projectType || "Not specified"}`,
-      "",
-      "Project Details:",
-      inquiry.details,
-    ].join("\n"),
+    text: emailBody,
+    attachments: attachment ? [attachment] : undefined,
   });
 
   if (error) {

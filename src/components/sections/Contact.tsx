@@ -1,12 +1,21 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { projectTypes, siteConfig } from "@/content/site";
+import {
+  budgetRanges,
+  projectTypes,
+  siteConfig,
+  startTimelines,
+} from "@/content/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
-export function Contact() {
+type ContactProps = {
+  showHeading?: boolean;
+};
+
+export function Contact({ showHeading = true }: ContactProps) {
   const [state, setState] = useState<FormState>("idle");
   const [error, setError] = useState("");
 
@@ -16,13 +25,12 @@ export function Contact() {
     setError("");
 
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form));
+    const formData = new FormData(form);
 
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       if (!res.ok) {
@@ -41,14 +49,16 @@ export function Contact() {
   return (
     <section id="contact" className="section-padding bg-ivory">
       <div className="container-site">
-        <SectionHeading
-          eyebrow="Get In Touch"
-          title={
-            <>
-              Start Your <em>Project</em>
-            </>
-          }
-        />
+        {showHeading && (
+          <SectionHeading
+            eyebrow="Get In Touch"
+            title={
+              <>
+                Start Your <em>Project</em>
+              </>
+            }
+          />
+        )}
 
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
@@ -61,8 +71,16 @@ export function Contact() {
 
             <dl className="mt-8 space-y-5">
               {[
-                { label: "Phone", value: siteConfig.phone, href: siteConfig.phoneHref },
-                { label: "Email", value: siteConfig.email, href: siteConfig.emailHref },
+                {
+                  label: "Phone",
+                  value: siteConfig.phone,
+                  href: siteConfig.phoneHref,
+                },
+                {
+                  label: "Email",
+                  value: siteConfig.email,
+                  href: siteConfig.emailHref,
+                },
                 { label: "Service Area", value: siteConfig.serviceArea },
               ].map((item) => (
                 <div
@@ -88,34 +106,48 @@ export function Contact() {
 
           <form
             onSubmit={handleSubmit}
+            encType="multipart/form-data"
             className="grid gap-4 lg:col-span-3 md:grid-cols-2"
           >
             <Field label="First Name" name="firstName" required />
             <Field label="Last Name" name="lastName" required />
             <Field label="Email" name="email" type="email" required />
             <Field label="Phone" name="phone" type="tel" />
+            <Field label="Project Location" name="projectLocation" required />
 
-            <div className="md:col-span-2">
-              <label
-                htmlFor="projectType"
-                className="block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-stone"
-              >
-                Project Type
-              </label>
-              <select
-                id="projectType"
-                name="projectType"
-                required
-                className="mt-1.5 w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
-              >
-                <option value="">Select a project type</option>
-                {projectTypes.map((type) => (
-                  <option key={type} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <SelectField label="Project Type" name="projectType" required>
+              <option value="">Select a project type</option>
+              {projectTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </SelectField>
+
+            <SelectField label="Estimated Budget" name="budgetRange">
+              <option value="">Select a range (optional)</option>
+              {budgetRanges.map((range) => (
+                <option key={range} value={range}>
+                  {range}
+                </option>
+              ))}
+            </SelectField>
+
+            <SelectField label="Desired Start" name="desiredStart">
+              <option value="">Select a timeline (optional)</option>
+              {startTimelines.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </SelectField>
+
+            <SelectField label="Plans Available?" name="plansAvailable">
+              <option value="">Select (optional)</option>
+              <option value="Yes">Yes — I have plans or drawings</option>
+              <option value="In progress">In progress</option>
+              <option value="No">Not yet</option>
+            </SelectField>
 
             <div className="md:col-span-2">
               <label
@@ -131,6 +163,26 @@ export function Contact() {
                 required
                 className="mt-1.5 w-full resize-y border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
               />
+            </div>
+
+            <div className="md:col-span-2">
+              <label
+                htmlFor="plans"
+                className="block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-stone"
+              >
+                Upload Plans or Photos (optional)
+              </label>
+              <input
+                id="plans"
+                name="plans"
+                type="file"
+                accept=".pdf,.jpg,.jpeg,.png,.webp"
+                className="mt-1.5 w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal file:mr-4 file:border-0 file:bg-navy file:px-3 file:py-1 file:text-xs file:uppercase file:tracking-wider file:text-ivory"
+              />
+              <p className="mt-1 text-xs text-stone-light">
+                PDF, JPG, or PNG · Max 10 MB. You can also email files to{" "}
+                {siteConfig.email}.
+              </p>
             </div>
 
             {state === "success" && (
@@ -186,6 +238,37 @@ function Field({
         required={required}
         className="mt-1.5 w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
       />
+    </div>
+  );
+}
+
+function SelectField({
+  label,
+  name,
+  required,
+  children,
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label
+        htmlFor={name}
+        className="block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-stone"
+      >
+        {label}
+      </label>
+      <select
+        id={name}
+        name={name}
+        required={required}
+        className="mt-1.5 w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
+      >
+        {children}
+      </select>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "Fisch Foundations",
+  descriptor: "General Contracting & Construction",
   tagline: "Build. Renovate. Construct.",
   description:
     "Licensed general contractor serving the tri-state area. Ground-up residential and commercial construction, precision renovation — built on firsthand experience across NY, NJ, and CT.",
@@ -9,84 +10,89 @@ export const siteConfig = {
   email: "Quote@FischFoundations.com",
   emailHref: "mailto:Quote@FischFoundations.com",
   serviceArea: "New York · New Jersey · Connecticut",
-  license: "General Contractor",
-  insurance: "Fully Insured & Bonded",
+  licenseNote:
+    "Licensed and insured for applicable projects and jurisdictions.",
 } as const;
 
 export const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Process", href: "#process" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-] as const;
-
-export const heroStats = [
-  { label: "Service Area", value: "NY · NJ · CT" },
-  { label: "Project Types", value: "Residential + Commercial" },
-  { label: "Insurance", value: "Fully Licensed & Bonded" },
-  { label: "Project Experience", value: "10 Projects" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ] as const;
 
 export const trustBadges = [
-  "General Contractor License",
-  "Fully Insured & Bonded",
-  "NY · NJ · CT Tri-State Area",
-  "Ground-Up & Renovation",
-  "Developer Background",
+  "Licensed & Insured",
+  "NY · NJ · CT Tri-State",
   "Residential + Commercial",
+  "Ground-Up & Renovation",
 ] as const;
 
-export const services = [
+export const founder = {
+  /** Set to display a name on the About page and founder section */
+  name: "",
+  title: "Principal · General Contractor",
+  bio: "Brings firsthand experience from complex residential and commercial developments across New York City — including ground-up multi-family work in Brooklyn and Queens and commercial projects in Manhattan.",
+  extendedBio:
+    "That background shapes how Fisch Foundations approaches every engagement: grounded in how developers actually think, plan, and build. Clients get a contractor who understands financing, phasing, and delivery — not just field execution.",
+} as const;
+
+export const projectDisclosure =
+  "Selected projects reflect the founder's direct professional involvement prior to and through the formation of Fisch Foundations. Roles have included development oversight, construction management, and general contracting depending on the project.";
+
+export const primaryServices = [
   {
     number: "01",
-    title: "Ground-Up Residential",
+    title: "Ground-Up Construction",
     description:
-      "Custom homes and multi-family builds from foundation to finish. Every trade, every phase — single point of accountability for complex residential projects.",
+      "Custom homes and multi-family builds from foundation to finish. Every trade, every phase — single point of accountability for complex residential and commercial projects.",
   },
   {
     number: "02",
-    title: "Commercial Construction",
-    description:
-      "Retail, office, mixed-use, and industrial builds. Tenant improvements to full shell-and-core. On schedule, on spec, regardless of complexity.",
-  },
-  {
-    number: "03",
-    title: "Renovation & Gut Rehab",
+    title: "Major Renovations",
     description:
       "Full-scope renovations from cosmetic upgrades to complete structural overhauls. Historic preservation, adaptive reuse, and high-end interior builds.",
   },
   {
-    number: "04",
-    title: "Design-Build",
-    description:
-      "Architecture, engineering, and construction under one roof. Streamlined path from concept to CO — faster timelines, fewer handoffs, lower risk.",
-  },
-  {
-    number: "05",
-    title: "Project Management",
+    number: "03",
+    title: "Construction Management",
     description:
       "Owner's representative and CM services. We protect your budget, enforce your schedule, and manage subcontractors on your behalf.",
   },
+] as const;
+
+export const additionalServices = [
   {
-    number: "06",
+    title: "Commercial Construction",
+    description:
+      "Retail, office, mixed-use, and industrial builds. Tenant improvements to full shell-and-core.",
+  },
+  {
+    title: "Design-Build",
+    description:
+      "Architecture, engineering, and construction under one roof — faster timelines, fewer handoffs.",
+  },
+  {
     title: "Site Development",
     description:
-      "Land clearing, grading, utilities, and infrastructure. We prepare sites for construction and handle the complex early-stage work.",
+      "Land clearing, grading, utilities, and infrastructure for complex early-stage work.",
   },
 ] as const;
 
+/** @deprecated Use primaryServices + additionalServices */
+export const services = [...primaryServices] as const;
+
 export const aboutRegions = [
   { label: "Manhattan", count: "2 Projects" },
-  { label: "Brooklyn", count: "5 Projects" },
-  { label: "Queens / LIC / Astoria", count: "3 Projects" },
+  { label: "Brooklyn", count: "3 Projects" },
+  { label: "Queens / LIC", count: "1 Project" },
 ] as const;
 
 export const aboutHighlights = [
-  { label: "License", value: "General Contractor" },
-  { label: "Insurance", value: "Fully Insured & Bonded" },
+  { label: "Credentials", value: "Licensed & Insured" },
   { label: "Service Area", value: "NY · NJ · CT Tri-State" },
-  { label: "Specialty", value: "Residential + Commercial" },
+  { label: "Focus", value: "Residential + Commercial" },
+  { label: "Experience", value: "Ground-Up & Renovation" },
 ] as const;
 
 export const processSteps = [
@@ -199,39 +205,9 @@ export const projects: Project[] = [
     image:
       "https://images1.apartments.com/i2/UKi3lCo8fQO4oJaAMQqjpaQSCiq1_-tQWnkEZapEoyw/116/the-northern-long-island-city-ny-building-photo.jpg",
   },
-  {
-    num: "07",
-    address: "1200 Bedford Ave",
-    city: "Bedford-Stuyvesant, Brooklyn",
-    borough: "brooklyn",
-    type: "Mixed-Use Residential",
-    note: "Bed-Stuy",
-  },
-  {
-    num: "08",
-    address: "2-24 26th Ave",
-    city: "Astoria, Queens",
-    borough: "queens",
-    type: "Multi-Family Residential",
-    note: "Astoria",
-  },
-  {
-    num: "09",
-    address: "362-372 Livingston Ave",
-    city: "Brooklyn",
-    borough: "brooklyn",
-    type: "Multi-Family Residential",
-    note: "Brooklyn",
-  },
-  {
-    num: "10",
-    address: "268 Bergen Street",
-    city: "Boerum Hill, Brooklyn",
-    borough: "brooklyn",
-    type: "Residential",
-    note: "Boerum Hill",
-  },
 ];
+
+export const featuredProjects = projects.slice(0, 4);
 
 export const projectTypes = [
   "Ground-Up Residential",
@@ -240,4 +216,21 @@ export const projectTypes = [
   "Design-Build",
   "Project Management",
   "Other",
+] as const;
+
+export const budgetRanges = [
+  "Under $250,000",
+  "$250,000 – $500,000",
+  "$500,000 – $1M",
+  "$1M – $5M",
+  "$5M+",
+  "Not sure yet",
+] as const;
+
+export const startTimelines = [
+  "Within 3 months",
+  "3–6 months",
+  "6–12 months",
+  "12+ months",
+  "Exploring options",
 ] as const;

@@ -14,7 +14,7 @@ export function CtaBanner() {
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-          <Button href="#contact" variant="ivory-solid">
+          <Button href="/contact" variant="ivory-solid">
             Request an Estimate
           </Button>
           <Button href={siteConfig.phoneHref} variant="ghost-white">

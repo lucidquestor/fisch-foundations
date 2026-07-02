@@ -1,0 +1,87 @@
+import Link from "next/link";
+import { founder, siteConfig } from "@/content/site";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Button } from "@/components/ui/Button";
+
+type FounderSectionProps = {
+  compact?: boolean;
+  hideTitle?: boolean;
+};
+
+export function FounderSection({ compact = false, hideTitle = false }: FounderSectionProps) {
+  const leadLine = founder.name
+    ? `Led by ${founder.name}, Fisch Foundations brings firsthand experience from complex residential and commercial developments across New York City.`
+    : "Fisch Foundations is led by a principal with firsthand experience from complex residential and commercial developments across New York City.";
+
+  return (
+    <section className={compact ? "section-padding bg-cream" : "section-padding bg-ivory"}>
+      <div className="container-site">
+        {!compact && !hideTitle && (
+          <SectionHeading
+            eyebrow="Leadership"
+            title={
+              <>
+                Built on <em>Integrity</em>
+              </>
+            }
+          />
+        )}
+
+        <div className={`grid items-center gap-10 ${compact ? "lg:grid-cols-5" : "lg:grid-cols-2 lg:gap-16"}`}>
+          <div className={`relative ${compact ? "lg:col-span-2" : ""}`}>
+            <div className="aspect-[4/5] max-w-sm overflow-hidden bg-navy">
+              <div className="flex h-full flex-col items-center justify-center p-8 text-center">
+                <span className="font-display text-6xl text-ivory/15">FF</span>
+                <p className="mt-4 text-[0.65rem] uppercase tracking-[0.2em] text-ivory/30">
+                  Professional photo
+                </p>
+                <p className="mt-1 text-xs text-ivory/20">
+                  Add founder image in /public
+                </p>
+              </div>
+            </div>
+            <div className="absolute -bottom-4 -right-4 hidden h-20 w-20 bg-crimson sm:flex sm:items-center sm:justify-center">
+              <span className="text-center font-display text-[0.65rem] leading-snug tracking-[0.12em] text-ivory/80">
+                Tri-
+                <br />
+                State
+              </span>
+            </div>
+          </div>
+
+          <div className={compact ? "lg:col-span-3" : ""}>
+            {compact && (
+              <p className="section-tag">Why Fisch Foundations</p>
+            )}
+            {founder.name && (
+              <h3 className="font-display text-3xl tracking-wide text-navy">
+                {founder.name}
+              </h3>
+            )}
+            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-crimson">
+              {founder.title}
+            </p>
+            <p className="mt-5 text-sm font-light leading-relaxed text-stone">
+              {leadLine} {founder.bio}
+            </p>
+            {!compact && (
+              <p className="mt-4 text-sm font-light leading-relaxed text-stone">
+                {founder.extendedBio}
+              </p>
+            )}
+            <p className="mt-4 text-xs leading-relaxed text-stone-light">
+              {siteConfig.licenseNote}
+            </p>
+            {compact && (
+              <div className="mt-6">
+                <Button href="/about" variant="outline">
+                  Our Story
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
