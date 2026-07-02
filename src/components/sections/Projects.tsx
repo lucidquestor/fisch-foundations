@@ -27,15 +27,9 @@ export function Projects({ variant = "full", fullBleed = false }: ProjectsProps)
   const source = isPreview ? featuredProjects : projects;
 
   const filtered = useMemo(() => {
-    const list =
-      active === "all"
-        ? source
-        : source.filter((p) => p.borough === active);
-    return list.map((p, i) => ({
-      ...p,
-      large: fullBleed && isPreview ? i === 0 : i === 0,
-    }));
-  }, [active, source, isPreview, fullBleed]);
+    if (active === "all") return source;
+    return source.filter((p) => p.borough === active);
+  }, [active, source]);
 
   const heading = (
     <SectionHeading
@@ -66,11 +60,7 @@ export function Projects({ variant = "full", fullBleed = false }: ProjectsProps)
       )}
     >
       {filtered.map((project) => (
-        <ProjectCard
-          key={project.num}
-          project={project}
-          tall={fullBleed && isPreview && project.large}
-        />
+        <ProjectCard key={project.num} project={project} />
       ))}
     </div>
   );
@@ -141,22 +131,9 @@ export function Projects({ variant = "full", fullBleed = false }: ProjectsProps)
   );
 }
 
-function ProjectCard({
-  project,
-  tall,
-}: {
-  project: Project & { large?: boolean };
-  tall?: boolean;
-}) {
+function ProjectCard({ project }: { project: Project }) {
   return (
-    <article
-      className={cn(
-        "group relative isolate overflow-hidden bg-navy-mid",
-        project.large || tall
-          ? "sm:col-span-2 aspect-[16/9] lg:aspect-[2/1]"
-          : "aspect-[4/3]",
-      )}
-    >
+    <article className="group relative isolate aspect-[4/3] overflow-hidden bg-navy-mid">
       {project.image ? (
         <Image
           src={project.image}
