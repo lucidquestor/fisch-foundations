@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import {
+  copy,
   featuredProjects,
   projectDisclosure,
   projectFilters,
@@ -47,7 +48,7 @@ export function Projects({ variant = "full", fullBleed = false }: ProjectsProps)
       description={
         isPreview
           ? undefined
-          : "Firsthand involvement across ground-up residential, multi-family, and commercial construction."
+          : copy.projects.fullIntro
       }
       dark={fullBleed && isPreview}
       className="mb-0"

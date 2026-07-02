@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import {
   budgetRanges,
+  copy,
   projectTypes,
   siteConfig,
   startTimelines,
@@ -66,7 +67,7 @@ export function Contact({ showHeading = true }: ContactProps) {
               Let&apos;s Talk
             </h3>
             <p className="mt-3 font-serif text-lg italic text-stone">
-              Every project begins with a conversation.
+              {copy.contact.intro}
             </p>
 
             <dl className="mt-8 space-y-5">

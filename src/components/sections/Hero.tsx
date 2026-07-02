@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { featuredProjects, siteConfig } from "@/content/site";
+import { copy, featuredProjects, siteConfig } from "@/content/site";
 import { Button } from "@/components/ui/Button";
 
 const heroProject = featuredProjects[0];
@@ -31,10 +31,9 @@ export function Hero() {
             <span className="text-crimson-muted">Endure.</span>
           </h1>
 
-          <p className="mt-5 max-w-md text-base font-normal leading-relaxed text-ivory/75 md:text-lg">
-            Ground-up residential and commercial construction across NY, NJ, and
-            CT — managed from foundation to certificate of occupancy.
-          </p>
+        <p className="mt-5 max-w-md text-base font-normal leading-relaxed text-ivory/75 md:text-lg">
+          {copy.hero.subhead}
+        </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
             <Button href="/contact" variant="ivory">
@@ -45,9 +44,9 @@ export function Hero() {
             </Button>
           </div>
 
-          <p className="mt-10 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ivory/35">
-            Licensed & Insured · Residential & Commercial · Ground-Up & Renovation
-          </p>
+        <p className="mt-10 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ivory/35">
+          {copy.hero.credibility}
+        </p>
         </div>
 
         <div className="relative hidden min-h-[420px] lg:block">

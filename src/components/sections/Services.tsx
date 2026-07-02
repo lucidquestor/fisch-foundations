@@ -1,5 +1,6 @@
 import {
   additionalServices,
+  copy,
   primaryServices,
 } from "@/content/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -31,9 +32,7 @@ export function Services({ variant = "full" }: ServicesProps) {
             </>
           }
           description={
-            isPreview
-              ? "Core capabilities for ground-up builds, major renovations, and construction management."
-              : "From permit drawings to final punch list — we manage the full construction lifecycle with a single point of accountability."
+            isPreview ? copy.services.previewIntro : copy.services.fullIntro
           }
         />
 

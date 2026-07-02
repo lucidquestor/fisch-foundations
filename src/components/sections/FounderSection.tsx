@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { founder, siteConfig } from "@/content/site";
+import { copy, founder, siteConfig } from "@/content/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 
@@ -21,7 +20,7 @@ export function FounderSection({ compact = false, hideTitle = false }: FounderSe
             eyebrow="Leadership"
             title={
               <>
-                Built on <em>Integrity</em>
+                Construction From a Developer&apos;s <em>Perspective</em>
               </>
             }
           />
@@ -51,7 +50,7 @@ export function FounderSection({ compact = false, hideTitle = false }: FounderSe
 
           <div className={compact ? "lg:col-span-3" : ""}>
             {compact && (
-              <p className="section-tag">Why Fisch Foundations</p>
+              <p className="section-tag">Developer-Led GC</p>
             )}
             {founder.name && (
               <h3 className="font-display text-3xl tracking-wide text-navy">
@@ -75,7 +74,7 @@ export function FounderSection({ compact = false, hideTitle = false }: FounderSe
             {compact && (
               <div className="mt-6">
                 <Button href="/about" variant="outline">
-                  Our Story
+                  How We Work
                 </Button>
               </div>
             )}

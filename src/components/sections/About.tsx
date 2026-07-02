@@ -1,6 +1,7 @@
 import {
   aboutHighlights,
   aboutRegions,
+  copy,
   projectDisclosure,
   siteConfig,
 } from "@/content/site";
@@ -67,8 +68,7 @@ export function About() {
               }
             />
             <blockquote className="border-l-[3px] border-crimson py-1 pl-5 font-serif text-xl italic leading-relaxed text-navy">
-              We bring a developer&apos;s perspective to every engagement —
-              understanding how projects are financed, phased, and delivered.
+              {copy.about.quote}
             </blockquote>
             <p className="mt-5 text-sm font-light leading-relaxed text-stone">
               Fisch Foundations was built on firsthand experience across New York
@@ -110,7 +110,7 @@ export function About() {
 
             <div className="mt-8">
               <Button href="/contact" variant="primary">
-                Work With Us
+                Discuss Your Project
               </Button>
             </div>
           </div>

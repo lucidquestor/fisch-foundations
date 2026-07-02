@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { copy } from "@/content/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Services } from "@/components/sections/Services";
 import { Process } from "@/components/sections/Process";
@@ -20,7 +21,7 @@ export default function ServicesPage() {
             Our <span className="text-crimson-muted">Services</span>
           </>
         }
-        description="Three core capabilities — with additional services available as your project requires."
+        description={copy.services.fullIntro}
       />
       <Services variant="full" />
       <Process />

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
+import { copy } from "@/content/site";
 import { PageHero } from "@/components/ui/PageHero";
 import { Contact } from "@/components/sections/Contact";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description:
-    "Request an estimate for your construction project. Serving New York, New Jersey, and Connecticut.",
+  description: copy.contact.pageDescription,
 };
 
 export default function ContactPage() {
@@ -18,7 +18,7 @@ export default function ContactPage() {
             Start Your <span className="text-crimson-muted">Project</span>
           </>
         }
-        description="Every project begins with a conversation. We respond within 24 hours."
+        description={copy.contact.pageDescription}
       />
       <Contact showHeading={false} />
     </>

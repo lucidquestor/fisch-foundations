@@ -3,7 +3,7 @@ export const siteConfig = {
   descriptor: "General Contracting & Construction",
   tagline: "Build. Renovate. Construct.",
   description:
-    "Licensed general contractor serving the tri-state area. Ground-up residential and commercial construction, precision renovation — built on firsthand experience across NY, NJ, and CT.",
+    "General contractor serving NY, NJ, and CT — ground-up multi-family, commercial builds, and major renovations, led by someone who has worked the developer side of the table.",
   url: "https://fischfoundations.com",
   phone: "(347) 359-2910",
   phoneHref: "tel:+13473592910",
@@ -12,6 +12,50 @@ export const siteConfig = {
   serviceArea: "New York · New Jersey · Connecticut",
   licenseNote:
     "Licensed and insured for applicable projects and jurisdictions.",
+} as const;
+
+export const copy = {
+  hero: {
+    subhead:
+      "Ground-up multi-family, commercial, and major renovation work across the tri-state — managed with an understanding of how projects are financed, phased, and delivered.",
+    credibility:
+      "Licensed & Insured · NY · NJ · CT · Residential & Commercial",
+  },
+  cta: {
+    title: "Planning a Ground-Up Build or Major Renovation?",
+    subtitle:
+      "Share your scope, location, and timeline — we respond within one business day.",
+  },
+  contact: {
+    intro:
+      "Tell us where the project stands — permits, plans, budget, timeline — and we'll help identify the next practical step.",
+    pageDescription:
+      "Describe your project and we'll follow up within one business day with next steps.",
+  },
+  about: {
+    pageTitle: "Construction From a Developer's Perspective",
+    pageDescription:
+      "How projects get financed, phased, and delivered — not just how they get built in the field.",
+    quote:
+      "We approach every engagement the way a developer does — with an eye on financing, phasing, carry costs, and what has to happen before the first trade mobilizes.",
+    approachTitle: "A Developer's Perspective",
+  },
+  jobsite: {
+    eyebrow: "Field Execution",
+    title: "Ground Break Through Certificate of Occupancy",
+    subtitle:
+      "Superintendent-level oversight, trade coordination, and weekly reporting on complex residential and commercial sites.",
+  },
+  services: {
+    previewIntro:
+      "Three core capabilities for owners who need one accountable team from preconstruction through closeout.",
+    fullIntro:
+      "Permit filings through punch list — one point of accountability across the full construction lifecycle.",
+  },
+  projects: {
+    fullIntro:
+      "Addresses, square footage, and building types from direct professional involvement across NYC and the tri-state.",
+  },
 } as const;
 
 /** Replace jobsite with "/jobsite.jpg" once you add your own photo to /public */
@@ -51,19 +95,19 @@ export const primaryServices = [
     number: "01",
     title: "Ground-Up Construction",
     description:
-      "Custom homes and multi-family builds from foundation to finish. Every trade, every phase — single point of accountability for complex residential and commercial projects.",
+      "Multi-family, mixed-use, and commercial builds where one team owns every trade — from excavation and structure through MEP, finishes, and final inspection.",
   },
   {
     number: "02",
     title: "Major Renovations",
     description:
-      "Full-scope renovations from cosmetic upgrades to complete structural overhauls. Historic preservation, adaptive reuse, and high-end interior builds.",
+      "Gut rehabs and structural work in occupied, landmark, or tight urban sites — sequenced to control noise, access, and cost exposure.",
   },
   {
     number: "03",
     title: "Construction Management",
     description:
-      "Owner's representative and CM services. We protect your budget, enforce your schedule, and manage subcontractors on your behalf.",
+      "Owner's rep and CM for clients who need budget discipline, subcontractor accountability, and schedule enforcement without running the site day to day.",
   },
 ] as const;
 
@@ -71,17 +115,17 @@ export const additionalServices = [
   {
     title: "Commercial Construction",
     description:
-      "Retail, office, mixed-use, and industrial builds. Tenant improvements to full shell-and-core.",
+      "Retail, office, and shell-and-core fit-outs — scoped for tenant delivery dates and landlord coordination.",
   },
   {
     title: "Design-Build",
     description:
-      "Architecture, engineering, and construction under one roof — faster timelines, fewer handoffs.",
+      "Architecture, engineering, and construction coordinated under one contract when speed and fewer handoffs matter.",
   },
   {
     title: "Site Development",
     description:
-      "Land clearing, grading, utilities, and infrastructure for complex early-stage work.",
+      "Grading, utilities, and infrastructure work that has to be right before vertical construction starts.",
   },
 ] as const;
 
@@ -104,27 +148,27 @@ export const aboutHighlights = [
 export const processSteps = [
   {
     step: "Step 01",
-    title: "Consultation",
+    title: "Site & Scope Review",
     description:
-      "We meet on-site or virtually to understand your scope, timeline, and goals. No cost, no obligation — ever.",
+      "We walk the property or review your drawings to understand constraints, entitlement status, and where the project actually stands today.",
   },
   {
     step: "Step 02",
     title: "Scope & Estimate",
     description:
-      "Detailed written proposal with itemized costs, phasing, and a realistic timeline. Nothing vague, nothing hidden.",
+      "A written proposal with line-item costs, phased milestones, and a schedule tied to how the work will sequence — not a lump-sum guess.",
   },
   {
     step: "Step 03",
     title: "Permitting & Preconstruction",
     description:
-      "We handle permitting, trade coordination, and procurement. You're kept informed at every milestone.",
+      "Filings, trade buyout, and procurement handled before mobilization — with status at each gate so there are no surprises at startup.",
   },
   {
     step: "Step 04",
-    title: "Build & Deliver",
+    title: "Build & Turnover",
     description:
-      "Active site management, daily oversight, weekly reporting, and a final walkthrough before keys are handed over.",
+      "Daily field oversight, weekly progress reports, and a documented punch-list walkthrough before keys or CO.",
   },
 ] as const;
 

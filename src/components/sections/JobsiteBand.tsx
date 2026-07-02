@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { siteImages } from "@/content/site";
+import { copy, siteImages } from "@/content/site";
 
 export function JobsiteBand() {
   return (
@@ -24,14 +24,13 @@ export function JobsiteBand() {
       <div className="absolute inset-0 flex items-center justify-center px-5 text-center">
         <div>
           <p className="text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-gold-light">
-            On Site · On Schedule
+            {copy.jobsite.eyebrow}
           </p>
           <p className="mt-3 max-w-2xl font-display text-[clamp(1.8rem,4vw,3rem)] leading-none tracking-wide text-ivory">
-            From Ground Break to Keys in Hand
+            {copy.jobsite.title}
           </p>
           <p className="mx-auto mt-4 max-w-lg text-sm font-normal leading-relaxed text-ivory/65">
-            Daily oversight, trade coordination, and accountable delivery on
-            complex residential and commercial builds.
+            {copy.jobsite.subtitle}
           </p>
         </div>
       </div>
