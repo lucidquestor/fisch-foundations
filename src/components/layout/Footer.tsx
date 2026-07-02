@@ -15,9 +15,14 @@ export function Footer() {
             {siteConfig.descriptor}
           </p>
         </div>
-        <p className="text-[0.7rem] tracking-wide text-ivory/35">
-          © {year} Fisch Foundations LLC · All rights reserved
-        </p>
+        <div className="text-center md:text-left">
+          <p className="text-[0.7rem] tracking-wide text-ivory/35">
+            © {year} Fisch Foundations LLC · All rights reserved
+          </p>
+          <p className="mt-1 text-[0.62rem] leading-relaxed tracking-wide text-ivory/25">
+            {siteConfig.licenseNote}
+          </p>
+        </div>
         <div className="flex flex-wrap justify-center gap-6">
           {navLinks.map((link) => (
             <Link
