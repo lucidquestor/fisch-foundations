@@ -23,18 +23,24 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-10 lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "text-xs font-medium uppercase tracking-[0.18em] transition-colors hover:text-navy",
-                pathname === link.href ? "text-navy" : "text-stone",
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "border-b-2 pb-1 text-xs font-medium uppercase tracking-[0.18em] transition-colors",
+                  active
+                    ? "border-crimson text-navy"
+                    : "border-transparent text-stone hover:border-navy/20 hover:text-navy",
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <Link href="/contact" className="btn-primary !px-6 !py-3">
             Get a Quote
           </Link>
@@ -71,17 +77,26 @@ export function Header() {
       {open && (
         <nav className="border-t border-cream-deeper bg-ivory px-5 py-4 lg:hidden">
           <ul className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-xs font-medium uppercase tracking-[0.18em] text-stone"
-                  onClick={() => setOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "inline-block border-l-2 pl-3 text-xs font-medium uppercase tracking-[0.18em] transition-colors",
+                      active
+                        ? "border-crimson text-navy"
+                        : "border-transparent text-stone",
+                    )}
+                    onClick={() => setOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
             <li>
               <Link
                 href="/contact"
