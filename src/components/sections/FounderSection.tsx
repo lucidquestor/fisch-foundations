@@ -29,7 +29,7 @@ export function FounderSection({ compact = false, hideTitle = false }: FounderSe
 
         <div className={`grid items-center gap-10 ${compact ? "lg:grid-cols-5" : "lg:grid-cols-2 lg:gap-16"}`}>
           <div className={`relative z-0 ${compact ? "lg:col-span-2" : ""}`}>
-            <div className="aspect-[4/5] max-w-sm overflow-hidden bg-navy">
+            <div className="aspect-[4/5] w-full max-w-sm overflow-hidden bg-navy mx-auto sm:mx-0">
               <div className="flex h-full flex-col items-center justify-center p-8 text-center">
                 <span className="font-display text-6xl text-ivory/15">FF</span>
                 <p className="mt-4 text-[0.65rem] uppercase tracking-[0.2em] text-ivory/30">

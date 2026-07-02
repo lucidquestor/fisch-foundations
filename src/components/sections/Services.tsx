@@ -43,7 +43,7 @@ export function Services({ variant = "full" }: ServicesProps) {
           {shown.map((service, index) => (
             <article
               key={service.number}
-              className={`group relative overflow-hidden border-cream-deeper bg-ivory p-8 transition-colors hover:bg-cream ${
+              className={`group relative overflow-hidden border-cream-deeper bg-ivory p-6 transition-colors hover:bg-cream md:p-8 ${
                 !isPreview && index % 3 !== 2 ? "lg:border-r" : ""
               } ${!isPreview && index < 3 ? "border-b lg:[&:nth-child(n+4)]:border-b-0" : ""} ${
                 isPreview && index < 2 ? "border-b md:border-b-0 md:border-r" : ""
@@ -52,7 +52,7 @@ export function Services({ variant = "full" }: ServicesProps) {
               <span className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-stone-lighter">
                 {service.number}
               </span>
-              <h3 className="mt-4 font-display text-2xl tracking-wide text-navy">
+              <h3 className="mt-4 font-display text-xl tracking-wide text-navy md:text-2xl">
                 {service.title}
               </h3>
               <p className="mt-3 text-sm font-light leading-relaxed text-stone">

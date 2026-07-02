@@ -91,9 +91,9 @@ export function Contact({ showHeading = true }: ContactProps) {
                   <dt className="min-w-[80px] pt-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-crimson">
                     {item.label}
                   </dt>
-                  <dd className="text-sm leading-relaxed text-charcoal">
+                  <dd className="text-sm leading-relaxed text-charcoal break-words">
                     {item.href ? (
-                      <a href={item.href} className="hover:text-crimson">
+                      <a href={item.href} className="break-all hover:text-crimson sm:break-normal">
                         {item.value}
                       </a>
                     ) : (
@@ -237,7 +237,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="mt-1.5 w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
+        className="mt-1.5 min-h-[44px] w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
       />
     </div>
   );
@@ -266,7 +266,7 @@ function SelectField({
         id={name}
         name={name}
         required={required}
-        className="mt-1.5 w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
+        className="mt-1.5 min-h-[44px] w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
       >
         {children}
       </select>

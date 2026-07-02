@@ -14,10 +14,10 @@ export function CtaBanner() {
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-          <Button href="/contact" variant="ivory-solid">
+          <Button href="/contact" variant="ivory-solid" className="w-full text-center sm:w-auto">
             Request an Estimate
           </Button>
-          <Button href={siteConfig.phoneHref} variant="ghost-white">
+          <Button href={siteConfig.phoneHref} variant="ghost-white" className="w-full text-center sm:w-auto">
             Call Us Directly
           </Button>
         </div>
