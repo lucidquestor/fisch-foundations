@@ -1,5 +1,6 @@
 import { processSteps } from "@/content/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { cn } from "@/lib/utils";
 
 export function Process() {
   return (
@@ -19,9 +20,13 @@ export function Process() {
           {processSteps.map((step, i) => (
             <li
               key={step.step}
-              className={`relative px-6 py-10 ${
-                i < processSteps.length - 1 ? "lg:border-r lg:border-ivory/10" : ""
-              } ${i % 2 === 0 ? "md:border-r md:border-ivory/10" : ""}`}
+              className={cn(
+                "relative border-b border-ivory/10 px-5 py-8 md:px-6 md:py-10",
+                i % 2 === 0 && "md:border-r md:border-ivory/10",
+                i < processSteps.length - 1 && "lg:border-r lg:border-ivory/10",
+                i >= processSteps.length - 2 && "md:border-b-0 lg:border-b-0",
+                i === processSteps.length - 1 && "border-b-0",
+              )}
             >
               <span className="mb-6 block h-2.5 w-2.5 bg-crimson-muted" />
               <p className="text-[0.65rem] uppercase tracking-[0.2em] text-ivory/35">

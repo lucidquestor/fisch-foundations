@@ -16,7 +16,7 @@ export default function ProjectsPage() {
         eyebrow="Portfolio"
         title={
           <>
-            Direct <span className="text-crimson-muted">Involvement</span>
+            Project <span className="text-crimson-muted">Experience</span>
           </>
         }
         description={copy.projects.fullIntro}

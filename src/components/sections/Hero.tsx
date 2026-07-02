@@ -6,7 +6,7 @@ const heroProject = featuredProjects[0];
 
 export function Hero() {
   return (
-    <section className="relative isolate min-h-[90vh] overflow-hidden border-b-[3px] border-crimson bg-navy lg:min-h-screen">
+    <section className="relative isolate overflow-hidden border-b-[3px] border-crimson bg-navy lg:min-h-screen">
       <div className="pointer-events-none absolute inset-0 z-0">
         <div
           className="absolute inset-0"
@@ -20,8 +20,8 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/40 lg:via-navy/90 lg:to-transparent" />
       </div>
 
-      <div className="container-site relative z-10 grid min-h-[90vh] lg:min-h-screen lg:grid-cols-2 lg:items-stretch">
-        <div className="grid px-5 py-28 md:px-10 lg:min-h-full lg:grid-rows-[1fr_auto] lg:px-16 lg:pb-0 lg:pt-32">
+      <div className="container-site relative z-10 grid lg:min-h-screen lg:grid-cols-2 lg:items-stretch">
+        <div className="grid px-5 py-24 md:px-10 md:py-28 lg:min-h-full lg:grid-rows-[1fr_auto] lg:px-16 lg:pb-0 lg:pt-32">
           <div className="flex flex-col justify-center lg:justify-end lg:pb-10">
             <p className="mb-6 flex items-center gap-4 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-gold-light">
               <span className="block h-px w-9 bg-gold-light" />
@@ -39,11 +39,11 @@ export function Hero() {
             </p>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-4 pb-6 lg:mt-0">
-            <Button href="/contact" variant="ivory">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 pb-6 lg:mt-0">
+            <Button href="/contact" variant="ivory" className="w-full text-center sm:w-auto">
               Start Your Project
             </Button>
-            <Button href="/projects" variant="ghost">
+            <Button href="/projects" variant="ghost" className="w-full text-center sm:w-auto">
               View Our Work
             </Button>
           </div>

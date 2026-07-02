@@ -54,7 +54,7 @@
   }
 
   .btn-base {
-    @apply inline-block px-10 py-4 text-xs font-bold uppercase tracking-[0.16em] transition-all duration-150;
+    @apply inline-block px-6 py-3.5 text-xs font-bold uppercase tracking-[0.16em] transition-all duration-150 sm:px-10 sm:py-4;
   }
 
   .btn-ivory {
