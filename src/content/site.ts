@@ -18,8 +18,6 @@ export const copy = {
   hero: {
     subhead:
       "Ground-up multi-family, commercial, and major renovation work across the tri-state — managed with an understanding of how projects are financed, phased, and delivered.",
-    credibility:
-      "Licensed & Insured · NY · NJ · CT · Residential & Commercial",
   },
   cta: {
     title: "Planning a Ground-Up Build or Major Renovation?",

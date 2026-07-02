@@ -21,8 +21,8 @@ export function Hero() {
       </div>
 
       <div className="container-site relative z-10 grid min-h-[90vh] lg:min-h-screen lg:grid-cols-2 lg:items-stretch">
-        <div className="flex flex-col justify-center px-5 py-28 md:px-10 lg:min-h-full lg:justify-between lg:px-16 lg:py-32">
-          <div>
+        <div className="grid px-5 py-28 md:px-10 lg:min-h-full lg:grid-rows-[1fr_auto] lg:px-16 lg:pb-0 lg:pt-32">
+          <div className="flex flex-col justify-center lg:justify-end lg:pb-10">
             <p className="mb-6 flex items-center gap-4 text-[0.7rem] font-semibold uppercase tracking-[0.35em] text-gold-light">
               <span className="block h-px w-9 bg-gold-light" />
               {siteConfig.descriptor} · Tri-State
@@ -39,24 +39,18 @@ export function Hero() {
             </p>
           </div>
 
-          <div className="mt-8 lg:mt-0">
-            <div className="flex flex-wrap gap-4">
-              <Button href="/contact" variant="ivory">
-                Start Your Project
-              </Button>
-              <Button href="/projects" variant="ghost">
-                View Our Work
-              </Button>
-            </div>
-
-            <p className="mt-6 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-ivory/35 lg:mt-4">
-              {copy.hero.credibility}
-            </p>
+          <div className="mt-8 flex flex-wrap gap-4 pb-6 lg:mt-0">
+            <Button href="/contact" variant="ivory">
+              Start Your Project
+            </Button>
+            <Button href="/projects" variant="ghost">
+              View Our Work
+            </Button>
           </div>
         </div>
 
-        <div className="relative z-0 hidden min-h-[420px] flex-col bg-navy lg:flex lg:min-h-full">
-          <div className="relative min-h-0 flex-1">
+        <div className="relative z-0 hidden min-h-[420px] grid-rows-[1fr_auto] bg-navy lg:grid lg:min-h-full">
+          <div className="relative min-h-0">
             {heroProject.image && (
               <Image
                 src={heroProject.image}
