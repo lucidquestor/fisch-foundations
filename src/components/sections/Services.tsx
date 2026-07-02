@@ -13,28 +13,27 @@ type ServicesProps = {
 
 export function Services({ variant = "full" }: ServicesProps) {
   const isPreview = variant === "preview";
-  const shown = isPreview ? primaryServices : primaryServices;
+  const shown = primaryServices;
 
   return (
     <section
       id={isPreview ? undefined : "services"}
       className={cn(
-        "section-padding",
-        isPreview ? "blueprint-bg bg-cream" : "bg-ivory",
+        isPreview ? "section-padding blueprint-bg bg-cream" : "bg-ivory px-5 pb-16 pt-10 md:px-10 md:pb-24 md:pt-14 lg:px-16",
       )}
     >
       <div className="container-site">
-        <SectionHeading
-          eyebrow="What We Build"
-          title={
-            <>
-              Our <span className="section-title-accent">Services</span>
-            </>
-          }
-          description={
-            isPreview ? copy.services.previewIntro : copy.services.fullIntro
-          }
-        />
+        {isPreview && (
+          <SectionHeading
+            eyebrow="What We Build"
+            title={
+              <>
+                Our <span className="section-title-accent">Services</span>
+              </>
+            }
+            description={copy.services.previewIntro}
+          />
+        )}
 
         <div
           className={`grid border border-cream-deeper ${
