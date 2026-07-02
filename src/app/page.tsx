@@ -1,7 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
-import { TrustBar } from "@/components/sections/TrustBar";
-import { Services } from "@/components/sections/Services";
+import { JobsiteBand } from "@/components/sections/JobsiteBand";
 import { Projects } from "@/components/sections/Projects";
+import { Services } from "@/components/sections/Services";
 import { FounderSection } from "@/components/sections/FounderSection";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 
@@ -9,9 +9,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <TrustBar />
+      <Projects variant="preview" fullBleed />
+      <JobsiteBand />
       <Services variant="preview" />
-      <Projects variant="preview" />
       <FounderSection compact />
       <CtaBanner />
     </>

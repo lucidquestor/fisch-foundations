@@ -4,6 +4,7 @@ import {
 } from "@/content/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 type ServicesProps = {
   variant?: "preview" | "full";
@@ -16,7 +17,10 @@ export function Services({ variant = "full" }: ServicesProps) {
   return (
     <section
       id={isPreview ? undefined : "services"}
-      className="section-padding bg-ivory"
+      className={cn(
+        "section-padding",
+        isPreview ? "blueprint-bg bg-cream" : "bg-ivory",
+      )}
     >
       <div className="container-site">
         <SectionHeading
@@ -28,7 +32,7 @@ export function Services({ variant = "full" }: ServicesProps) {
           }
           description={
             isPreview
-              ? "Three core capabilities — with additional services available as your project requires."
+              ? "Core capabilities for ground-up builds, major renovations, and construction management."
               : "From permit drawings to final punch list — we manage the full construction lifecycle with a single point of accountability."
           }
         />

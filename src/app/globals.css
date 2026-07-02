@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -23,6 +23,13 @@
     @apply mx-auto max-w-[1400px];
   }
 
+  .blueprint-bg {
+    background-image:
+      linear-gradient(rgba(44, 34, 24, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(44, 34, 24, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
   .section-tag {
     @apply mb-3 flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-crimson;
   }
@@ -44,27 +51,31 @@
     @apply mt-3 max-w-xl font-serif text-lg font-light leading-relaxed text-stone;
   }
 
+  .btn-base {
+    @apply inline-block px-10 py-4 text-xs font-bold uppercase tracking-[0.16em] transition-all duration-150;
+  }
+
   .btn-ivory {
-    @apply inline-block bg-ivory px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-navy transition-colors hover:bg-cream;
+    @apply btn-base bg-ivory text-navy shadow-[0_3px_0_0_rgba(0,0,0,0.2)] hover:bg-cream hover:shadow-[0_1px_0_0_rgba(0,0,0,0.2)] hover:translate-y-0.5;
   }
 
   .btn-ghost {
-    @apply inline-block border border-ivory/30 bg-transparent px-8 py-3.5 text-xs font-medium uppercase tracking-[0.18em] text-ivory transition-colors hover:border-ivory/70;
+    @apply btn-base border-2 border-ivory/40 bg-transparent font-semibold text-ivory hover:border-ivory hover:bg-ivory/5;
   }
 
   .btn-primary {
-    @apply inline-block bg-navy px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-ivory transition-colors hover:bg-navy-mid;
+    @apply btn-base bg-navy text-ivory shadow-[0_3px_0_0_rgba(0,0,0,0.25)] hover:bg-navy-mid hover:shadow-[0_1px_0_0_rgba(0,0,0,0.25)] hover:translate-y-0.5;
   }
 
   .btn-outline {
-    @apply inline-block border border-navy bg-transparent px-8 py-3.5 text-xs font-medium uppercase tracking-[0.16em] text-navy transition-colors hover:bg-navy hover:text-ivory;
+    @apply btn-base border-2 border-navy bg-transparent font-semibold text-navy hover:bg-navy hover:text-ivory;
   }
 
   .btn-ivory-solid {
-    @apply inline-block bg-ivory px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-navy transition-colors hover:bg-cream;
+    @apply btn-base bg-ivory text-navy shadow-[0_3px_0_0_rgba(0,0,0,0.15)] hover:bg-cream hover:translate-y-0.5;
   }
 
   .btn-ghost-white {
-    @apply inline-block border border-ivory/35 bg-transparent px-8 py-3.5 text-xs font-medium uppercase tracking-[0.16em] text-ivory transition-colors hover:border-ivory;
+    @apply btn-base border-2 border-ivory/40 bg-transparent font-semibold text-ivory hover:border-ivory hover:bg-ivory/5;
   }
 }

@@ -35,7 +35,7 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn-primary !px-5 !py-2.5">
+          <Link href="/contact" className="btn-primary !px-6 !py-3">
             Get a Quote
           </Link>
         </nav>

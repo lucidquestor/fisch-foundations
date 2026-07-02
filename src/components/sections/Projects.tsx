@@ -16,9 +16,10 @@ import { cn } from "@/lib/utils";
 
 type ProjectsProps = {
   variant?: "preview" | "full";
+  fullBleed?: boolean;
 };
 
-export function Projects({ variant = "full" }: ProjectsProps) {
+export function Projects({ variant = "full", fullBleed = false }: ProjectsProps) {
   const isPreview = variant === "preview";
   const [active, setActive] = useState<ProjectBorough>("all");
 
@@ -29,8 +30,64 @@ export function Projects({ variant = "full" }: ProjectsProps) {
       active === "all"
         ? source
         : source.filter((p) => p.borough === active);
-    return list.map((p, i) => ({ ...p, large: isPreview ? i === 0 : i === 0 }));
-  }, [active, source, isPreview]);
+    return list.map((p, i) => ({
+      ...p,
+      large: fullBleed && isPreview ? i === 0 : i === 0,
+    }));
+  }, [active, source, isPreview, fullBleed]);
+
+  const heading = (
+    <SectionHeading
+      eyebrow="Project Experience"
+      title={
+        <>
+          Project <em>Experience</em>
+        </>
+      }
+      description={
+        isPreview
+          ? undefined
+          : "Firsthand involvement across ground-up residential, multi-family, and commercial construction."
+      }
+      dark={fullBleed && isPreview}
+      className="mb-0"
+    />
+  );
+
+  const grid = (
+    <div
+      className={cn(
+        "grid gap-0.5",
+        fullBleed && isPreview
+          ? "sm:grid-cols-2 lg:grid-cols-4"
+          : "gap-1 sm:grid-cols-2 lg:grid-cols-3",
+      )}
+    >
+      {filtered.map((project) => (
+        <ProjectCard
+          key={project.num}
+          project={project}
+          tall={fullBleed && isPreview && project.large}
+        />
+      ))}
+    </div>
+  );
+
+  if (fullBleed && isPreview) {
+    return (
+      <section className="bg-navy">
+        <div className="container-site px-5 pb-6 pt-14 md:px-10 lg:px-16">
+          {heading}
+        </div>
+        {grid}
+        <div className="container-site px-5 py-10 text-center md:px-10 lg:px-16">
+          <Button href="/projects" variant="ghost-white">
+            View Full Portfolio
+          </Button>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
@@ -39,20 +96,7 @@ export function Projects({ variant = "full" }: ProjectsProps) {
     >
       <div className="container-site">
         <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading
-            eyebrow="Project Experience"
-            title={
-              <>
-                Project <em>Experience</em>
-              </>
-            }
-            description={
-              isPreview
-                ? "Selected developments across Manhattan, Brooklyn, and Queens."
-                : "Firsthand involvement across ground-up residential, multi-family, and commercial construction."
-            }
-            className="mb-0"
-          />
+          {heading}
 
           {!isPreview && (
             <div className="flex flex-wrap gap-2">
@@ -62,10 +106,10 @@ export function Projects({ variant = "full" }: ProjectsProps) {
                   type="button"
                   onClick={() => setActive(filter.id)}
                   className={cn(
-                    "px-4 py-2 text-[0.68rem] font-medium uppercase tracking-[0.14em] transition-colors",
+                    "px-4 py-2.5 text-[0.68rem] font-bold uppercase tracking-[0.14em] transition-colors",
                     active === filter.id
                       ? "bg-navy text-ivory"
-                      : "border border-cream-deeper bg-ivory text-stone hover:border-navy/30",
+                      : "border-2 border-cream-deeper bg-ivory text-stone hover:border-navy/30",
                   )}
                 >
                   {filter.label}
@@ -81,11 +125,7 @@ export function Projects({ variant = "full" }: ProjectsProps) {
           </p>
         )}
 
-        <div className="grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((project) => (
-            <ProjectCard key={project.num} project={project} />
-          ))}
-        </div>
+        {grid}
 
         {isPreview && (
           <div className="mt-10 text-center">
@@ -99,12 +139,20 @@ export function Projects({ variant = "full" }: ProjectsProps) {
   );
 }
 
-function ProjectCard({ project }: { project: Project & { large?: boolean } }) {
+function ProjectCard({
+  project,
+  tall,
+}: {
+  project: Project & { large?: boolean };
+  tall?: boolean;
+}) {
   return (
     <article
       className={cn(
-        "group relative overflow-hidden bg-navy",
-        project.large ? "sm:col-span-2 lg:aspect-[16/7]" : "aspect-[4/3]",
+        "group relative overflow-hidden bg-navy-mid",
+        project.large || tall
+          ? "sm:col-span-2 aspect-[16/9] lg:aspect-[2/1]"
+          : "aspect-[4/3]",
       )}
     >
       {project.image ? (
@@ -112,7 +160,7 @@ function ProjectCard({ project }: { project: Project & { large?: boolean } }) {
           src={project.image}
           alt={project.address}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
       ) : (
@@ -121,16 +169,16 @@ function ProjectCard({ project }: { project: Project & { large?: boolean } }) {
         </div>
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-navy/10" />
 
       <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-        <p className="text-[0.65rem] uppercase tracking-[0.18em] text-gold-light">
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-gold-light">
           {project.num}
         </p>
         <p className="mt-1 text-[0.68rem] uppercase tracking-[0.12em] text-ivory/55">
           Involved In · {project.type}
         </p>
-        <h3 className="mt-2 font-display text-2xl tracking-wide text-ivory md:text-3xl">
+        <h3 className="mt-2 font-display text-xl tracking-wide text-ivory md:text-2xl lg:text-3xl">
           {project.address}
         </h3>
         <p className="mt-1 text-sm text-ivory/60">
