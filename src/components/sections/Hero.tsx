@@ -6,7 +6,7 @@ const heroProject = featuredProjects[0];
 
 export function Hero() {
   return (
-    <section className="relative isolate min-h-[90vh] overflow-hidden bg-navy lg:min-h-screen">
+    <section className="relative isolate min-h-[90vh] overflow-hidden border-b-[3px] border-crimson bg-navy lg:min-h-screen">
       <div className="pointer-events-none absolute inset-0 z-0">
         <div
           className="absolute inset-0"

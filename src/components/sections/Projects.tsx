@@ -45,7 +45,7 @@ export function Projects({ variant = "full", fullBleed = false }: ProjectsProps)
           ? undefined
           : copy.projects.fullIntro
       }
-      dark={fullBleed && isPreview}
+      dark={!(fullBleed && isPreview)}
       className="mb-0"
     />
   );
@@ -53,9 +53,9 @@ export function Projects({ variant = "full", fullBleed = false }: ProjectsProps)
   const grid = (
     <div
       className={cn(
-        "grid gap-0.5",
+        "grid",
         fullBleed && isPreview
-          ? "sm:grid-cols-2 lg:grid-cols-4"
+          ? "gap-1 sm:grid-cols-2 lg:grid-cols-4"
           : "gap-1 sm:grid-cols-2 lg:grid-cols-3",
       )}
     >
@@ -67,13 +67,13 @@ export function Projects({ variant = "full", fullBleed = false }: ProjectsProps)
 
   if (fullBleed && isPreview) {
     return (
-      <section className="relative isolate border-t border-ivory/10 bg-navy">
-        <div className="container-site relative z-10 px-5 pb-6 pt-16 md:px-10 md:pt-20 lg:px-16">
+      <section className="relative isolate bg-cream-dark">
+        <div className="container-site relative z-10 px-5 pb-8 pt-16 md:px-10 md:pt-20 lg:px-16">
           {heading}
         </div>
         <div className="relative z-0">{grid}</div>
         <div className="container-site relative z-10 px-5 py-10 text-center md:px-10 lg:px-16">
-          <Button href="/projects" variant="ghost-white">
+          <Button href="/projects" variant="outline">
             View Full Portfolio
           </Button>
         </div>
