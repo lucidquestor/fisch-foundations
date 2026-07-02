@@ -1,5 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
-import { StatsBar } from "@/components/sections/StatsBar";
+import { TrustBar } from "@/components/sections/TrustBar";
 import { Services } from "@/components/sections/Services";
 import { About } from "@/components/sections/About";
 import { Process } from "@/components/sections/Process";
@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <StatsBar />
+      <TrustBar />
       <Services />
       <About />
       <Process />

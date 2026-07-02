@@ -3,25 +3,34 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Process() {
   return (
-    <section id="process" className="section-padding">
-      <div className="container-narrow">
+    <section id="process" className="section-padding bg-navy">
+      <div className="container-site">
         <SectionHeading
           eyebrow="How We Work"
-          title="The Process"
-          align="center"
-          className="mx-auto text-center"
+          title={
+            <>
+              The <em>Process</em>
+            </>
+          }
+          dark
         />
 
-        <ol className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step) => (
-            <li key={step.step} className="relative">
-              <span className="font-display text-5xl font-semibold text-brand-200">
+        <ol className="grid border-t border-ivory/10 md:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((step, i) => (
+            <li
+              key={step.step}
+              className={`relative px-6 py-10 ${
+                i < processSteps.length - 1 ? "lg:border-r lg:border-ivory/10" : ""
+              } ${i % 2 === 0 ? "md:border-r md:border-ivory/10" : ""}`}
+            >
+              <span className="mb-6 block h-2.5 w-2.5 bg-crimson-muted" />
+              <p className="text-[0.65rem] uppercase tracking-[0.2em] text-ivory/35">
                 {step.step}
-              </span>
-              <h3 className="mt-4 font-display text-xl font-semibold text-brand-950">
+              </p>
+              <h3 className="mt-3 font-display text-2xl tracking-wide text-ivory">
                 {step.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-brand-700">
+              <p className="mt-3 text-sm font-light leading-relaxed text-ivory/55">
                 {step.description}
               </p>
             </li>

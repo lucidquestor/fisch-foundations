@@ -76,6 +76,12 @@ export const services = [
   },
 ] as const;
 
+export const aboutRegions = [
+  { label: "Manhattan", count: "2 Projects" },
+  { label: "Brooklyn", count: "5 Projects" },
+  { label: "Queens / LIC / Astoria", count: "3 Projects" },
+] as const;
+
 export const aboutHighlights = [
   { label: "License", value: "General Contractor" },
   { label: "Insurance", value: "Fully Insured & Bonded" },
@@ -85,38 +91,146 @@ export const aboutHighlights = [
 
 export const processSteps = [
   {
-    step: "01",
+    step: "Step 01",
     title: "Consultation",
     description:
       "We meet on-site or virtually to understand your scope, timeline, and goals. No cost, no obligation — ever.",
   },
   {
-    step: "02",
+    step: "Step 02",
     title: "Scope & Estimate",
     description:
       "Detailed written proposal with itemized costs, phasing, and a realistic timeline. Nothing vague, nothing hidden.",
   },
   {
-    step: "03",
+    step: "Step 03",
     title: "Permitting & Preconstruction",
     description:
       "We handle permitting, trade coordination, and procurement. You're kept informed at every milestone.",
   },
   {
-    step: "04",
+    step: "Step 04",
     title: "Build & Deliver",
     description:
       "Active site management, daily oversight, weekly reporting, and a final walkthrough before keys are handed over.",
   },
 ] as const;
 
-export type ProjectRegion = "All" | "Manhattan" | "Brooklyn" | "Queens / LIC";
+export type ProjectBorough = "all" | "manhattan" | "brooklyn" | "queens";
 
-export const projectRegions: { label: ProjectRegion; count: number }[] = [
-  { label: "All", count: 10 },
-  { label: "Manhattan", count: 2 },
-  { label: "Brooklyn", count: 5 },
-  { label: "Queens / LIC", count: 3 },
+export const projectFilters: { id: ProjectBorough; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "manhattan", label: "Manhattan" },
+  { id: "brooklyn", label: "Brooklyn" },
+  { id: "queens", label: "Queens / LIC" },
+];
+
+export type Project = {
+  num: string;
+  address: string;
+  city: string;
+  borough: Exclude<ProjectBorough, "all">;
+  type: string;
+  note?: string;
+  image?: string;
+  large?: boolean;
+};
+
+export const projects: Project[] = [
+  {
+    num: "01",
+    address: "26 Sherman Ave",
+    city: "Fort George, Manhattan",
+    borough: "manhattan",
+    type: "Mixed-Use Residential",
+    note: "58,000 sf · 2021",
+    image:
+      "https://images1.apartments.com/i2/tJuNt8kZ--ACXEeKlKeMalYr7auvZqtx2Asoo-bo4L8/116/pointe-26-new-york-ny-primary-photo.jpg",
+    large: true,
+  },
+  {
+    num: "02",
+    address: "165 Lexington Ave",
+    city: "Kips Bay, Manhattan",
+    borough: "manhattan",
+    type: "Luxury Condominium",
+    note: "53,841 sf · 2020",
+    image:
+      "https://images1.apartments.com/i2/MsQFWPQeLkLGulYQCdXc3fBeKKHaRRoLQKQg-HIwwpU/116/lexi-condos-new-york-ny-exterior-building-view-165-lexington-ave.jpg",
+  },
+  {
+    num: "03",
+    address: "597 / 575 Grand Street",
+    city: "Williamsburg, Brooklyn",
+    borough: "brooklyn",
+    type: "Multi-Family Residential",
+    note: "126,478 sf · 185 units",
+    image:
+      "https://images1.apartments.com/i2/yxNFETpZn-W_lFgyfhZa7TGtHiIfloJWK_uXHjBOyQs/116/597-grand-st-brooklyn-ny-primary-photo.jpg",
+  },
+  {
+    num: "04",
+    address: "570 Fulton Street",
+    city: "Fort Greene, Brooklyn",
+    borough: "brooklyn",
+    type: "Mixed-Use · 23 Stories",
+    note: "128,872 sf · 163 units",
+    image:
+      "https://images1.apartments.com/i2/2PlM9FueG24PCSfQARDNwBM5c6MBOByYuNE7fhEv1X8/116/fulton-greene-brooklyn-ny-primary-photo.jpg",
+    large: true,
+  },
+  {
+    num: "05",
+    address: "38-38 32nd Street",
+    city: "Long Island City, Queens",
+    borough: "queens",
+    type: "Residential · The Northern I",
+    note: "9 stories · 64 units",
+    image:
+      "https://images1.apartments.com/i2/Zm1lsMXMdxqa4FCMNjk8fhS_QHNXHB1vLFyQES-JdHQ/116/the-northern-long-island-city-ny-3838-32nd-st.jpg",
+  },
+  {
+    num: "06",
+    address: "38-27 32nd Street",
+    city: "Long Island City, Queens",
+    borough: "queens",
+    type: "Residential · The Northern II",
+    note: "10 stories · 52 units",
+    image:
+      "https://images1.apartments.com/i2/UKi3lCo8fQO4oJaAMQqjpaQSCiq1_-tQWnkEZapEoyw/116/the-northern-long-island-city-ny-building-photo.jpg",
+  },
+  {
+    num: "07",
+    address: "1200 Bedford Ave",
+    city: "Bedford-Stuyvesant, Brooklyn",
+    borough: "brooklyn",
+    type: "Mixed-Use Residential",
+    note: "Bed-Stuy",
+  },
+  {
+    num: "08",
+    address: "2-24 26th Ave",
+    city: "Astoria, Queens",
+    borough: "queens",
+    type: "Multi-Family Residential",
+    note: "Astoria",
+  },
+  {
+    num: "09",
+    address: "362-372 Livingston Ave",
+    city: "Brooklyn",
+    borough: "brooklyn",
+    type: "Multi-Family Residential",
+    note: "Brooklyn",
+  },
+  {
+    num: "10",
+    address: "268 Bergen Street",
+    city: "Boerum Hill, Brooklyn",
+    borough: "brooklyn",
+    type: "Residential",
+    note: "Boerum Hill",
+  },
 ];
 
 export const projectTypes = [

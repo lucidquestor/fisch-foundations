@@ -6,7 +6,7 @@ import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
+    default: `${siteConfig.name} — ${siteConfig.tagline}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="font-sans antialiased bg-brand-50 text-brand-950">
+      <body className="bg-ivory text-charcoal antialiased">
         <Header />
         <main>{children}</main>
         <Footer />

@@ -5,27 +5,40 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: "#f6f5f2",
-          100: "#ebe8e0",
-          200: "#d6d0c2",
-          300: "#bdb4a0",
-          400: "#a3957d",
-          500: "#8f8068",
-          600: "#7a6c58",
-          700: "#645749",
-          800: "#544a3f",
-          900: "#484038",
-          950: "#27221c",
+        ivory: "#FDFAF6",
+        cream: {
+          DEFAULT: "#F7F3ED",
+          dark: "#EDE8DF",
+          deeper: "#E2DAD0",
         },
-        accent: {
-          DEFAULT: "#c9a227",
-          dark: "#a8861f",
+        crimson: {
+          DEFAULT: "#8B0E18",
+          light: "#A8192A",
+          muted: "#C4424F",
         },
+        navy: {
+          DEFAULT: "#2C2218",
+          mid: "#3A2C1E",
+          light: "#4A3828",
+        },
+        gold: {
+          DEFAULT: "#A07830",
+          light: "#C49A50",
+        },
+        stone: {
+          DEFAULT: "#6B6158",
+          light: "#9A9088",
+          lighter: "#C2BAB0",
+        },
+        charcoal: "#2C2620",
       },
       fontFamily: {
-        sans: ["system-ui", "-apple-system", "Segoe UI", "sans-serif"],
-        display: ["Georgia", "Times New Roman", "serif"],
+        sans: ["Barlow", "system-ui", "sans-serif"],
+        display: ["Bebas Neue", "sans-serif"],
+        serif: ["Cormorant Garamond", "Georgia", "serif"],
+      },
+      letterSpacing: {
+        widest2: "0.35em",
       },
     },
   },

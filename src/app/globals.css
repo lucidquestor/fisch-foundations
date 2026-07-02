@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow:wght@300;400;500;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,14 +8,63 @@
   html {
     @apply scroll-smooth;
   }
+
+  body {
+    @apply bg-ivory text-charcoal font-sans font-light;
+  }
 }
 
-@layer utilities {
+@layer components {
   .section-padding {
-    @apply px-6 py-20 md:px-10 lg:px-16 lg:py-28;
+    @apply px-5 py-16 md:px-10 md:py-24 lg:px-16;
   }
 
-  .container-narrow {
-    @apply mx-auto max-w-6xl;
+  .container-site {
+    @apply mx-auto max-w-[1400px];
+  }
+
+  .section-tag {
+    @apply mb-3 flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-crimson;
+  }
+
+  .section-tag::before {
+    content: "";
+    @apply block h-px w-7 bg-crimson;
+  }
+
+  .section-title {
+    @apply font-display text-[clamp(2.2rem,4.5vw,3.6rem)] leading-none tracking-wide text-navy;
+  }
+
+  .section-title em {
+    @apply not-italic text-crimson;
+  }
+
+  .section-intro {
+    @apply mt-3 max-w-xl font-serif text-lg font-light leading-relaxed text-stone;
+  }
+
+  .btn-ivory {
+    @apply inline-block bg-ivory px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.18em] text-navy transition-colors hover:bg-cream;
+  }
+
+  .btn-ghost {
+    @apply inline-block border border-ivory/30 bg-transparent px-8 py-3.5 text-xs font-medium uppercase tracking-[0.18em] text-ivory transition-colors hover:border-ivory/70;
+  }
+
+  .btn-primary {
+    @apply inline-block bg-navy px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-ivory transition-colors hover:bg-navy-mid;
+  }
+
+  .btn-outline {
+    @apply inline-block border border-navy bg-transparent px-8 py-3.5 text-xs font-medium uppercase tracking-[0.16em] text-navy transition-colors hover:bg-navy hover:text-ivory;
+  }
+
+  .btn-ivory-solid {
+    @apply inline-block bg-ivory px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-navy transition-colors hover:bg-cream;
+  }
+
+  .btn-ghost-white {
+    @apply inline-block border border-ivory/35 bg-transparent px-8 py-3.5 text-xs font-medium uppercase tracking-[0.16em] text-ivory transition-colors hover:border-ivory;
   }
 }

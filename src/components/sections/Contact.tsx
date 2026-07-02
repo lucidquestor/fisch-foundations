@@ -39,76 +39,74 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding">
-      <div className="container-narrow">
+    <section id="contact" className="section-padding bg-ivory">
+      <div className="container-site">
         <SectionHeading
           eyebrow="Get In Touch"
-          title="Start Your Project"
+          title={
+            <>
+              Start Your <em>Project</em>
+            </>
+          }
         />
 
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <h3 className="font-display text-2xl font-semibold text-brand-950">
+            <h3 className="font-display text-3xl tracking-wide text-navy">
               Let&apos;s Talk
             </h3>
-            <p className="mt-3 text-brand-700">
+            <p className="mt-3 font-serif text-lg italic text-stone">
               Every project begins with a conversation.
             </p>
 
-            <dl className="mt-8 space-y-6">
-              <div>
-                <dt className="text-xs font-semibold uppercase tracking-wider text-brand-500">
-                  Phone
-                </dt>
-                <dd className="mt-1">
-                  <a
-                    href={siteConfig.phoneHref}
-                    className="text-lg font-semibold text-brand-950 hover:text-accent-dark"
-                  >
-                    {siteConfig.phone}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs font-semibold uppercase tracking-wider text-brand-500">
-                  Email
-                </dt>
-                <dd className="mt-1">
-                  <a
-                    href={siteConfig.emailHref}
-                    className="text-lg font-semibold text-brand-950 hover:text-accent-dark"
-                  >
-                    {siteConfig.email}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="text-xs font-semibold uppercase tracking-wider text-brand-500">
-                  Service Area
-                </dt>
-                <dd className="mt-1 text-brand-700">{siteConfig.serviceArea}</dd>
-              </div>
+            <dl className="mt-8 space-y-5">
+              {[
+                { label: "Phone", value: siteConfig.phone, href: siteConfig.phoneHref },
+                { label: "Email", value: siteConfig.email, href: siteConfig.emailHref },
+                { label: "Service Area", value: siteConfig.serviceArea },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="flex gap-4 border-b border-cream-deeper pb-5 last:border-b-0"
+                >
+                  <dt className="min-w-[80px] pt-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-crimson">
+                    {item.label}
+                  </dt>
+                  <dd className="text-sm leading-relaxed text-charcoal">
+                    {item.href ? (
+                      <a href={item.href} className="hover:text-crimson">
+                        {item.value}
+                      </a>
+                    ) : (
+                      item.value
+                    )}
+                  </dd>
+                </div>
+              ))}
             </dl>
           </div>
 
           <form
             onSubmit={handleSubmit}
-            className="grid gap-4 rounded-sm border border-brand-200 bg-white p-8 lg:col-span-3 md:grid-cols-2"
+            className="grid gap-4 lg:col-span-3 md:grid-cols-2"
           >
             <Field label="First Name" name="firstName" required />
             <Field label="Last Name" name="lastName" required />
-            <Field label="Email" name="email" type="email" required className="md:col-span-1" />
+            <Field label="Email" name="email" type="email" required />
             <Field label="Phone" name="phone" type="tel" />
 
             <div className="md:col-span-2">
-              <label htmlFor="projectType" className="block text-sm font-medium text-brand-800">
+              <label
+                htmlFor="projectType"
+                className="block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-stone"
+              >
                 Project Type
               </label>
               <select
                 id="projectType"
                 name="projectType"
                 required
-                className="mt-1 w-full rounded-sm border border-brand-300 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
+                className="mt-1.5 w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
               >
                 <option value="">Select a project type</option>
                 {projectTypes.map((type) => (
@@ -120,7 +118,10 @@ export function Contact() {
             </div>
 
             <div className="md:col-span-2">
-              <label htmlFor="details" className="block text-sm font-medium text-brand-800">
+              <label
+                htmlFor="details"
+                className="block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-stone"
+              >
                 Project Details
               </label>
               <textarea
@@ -128,17 +129,17 @@ export function Contact() {
                 name="details"
                 rows={5}
                 required
-                className="mt-1 w-full rounded-sm border border-brand-300 px-3 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
+                className="mt-1.5 w-full resize-y border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
               />
             </div>
 
             {state === "success" && (
-              <p className="md:col-span-2 text-sm font-medium text-green-700">
+              <p className="md:col-span-2 text-sm font-medium text-crimson">
                 Thank you — we&apos;ll be in touch within 24 hours.
               </p>
             )}
             {state === "error" && (
-              <p className="md:col-span-2 text-sm font-medium text-red-700">
+              <p className="md:col-span-2 text-sm font-medium text-crimson-light">
                 {error}
               </p>
             )}
@@ -147,7 +148,7 @@ export function Contact() {
               <button
                 type="submit"
                 disabled={state === "submitting"}
-                className="w-full rounded-sm bg-brand-950 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-800 disabled:opacity-60 md:w-auto"
+                className="btn-primary w-full disabled:opacity-60 md:w-auto"
               >
                 {state === "submitting" ? "Sending…" : "Submit Inquiry"}
               </button>
@@ -164,17 +165,18 @@ function Field({
   name,
   type = "text",
   required,
-  className,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
-  className?: string;
 }) {
   return (
-    <div className={className}>
-      <label htmlFor={name} className="block text-sm font-medium text-brand-800">
+    <div>
+      <label
+        htmlFor={name}
+        className="block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-stone"
+      >
         {label}
       </label>
       <input
@@ -182,7 +184,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="mt-1 w-full rounded-sm border border-brand-300 px-3 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-1 focus:ring-brand-600"
+        className="mt-1.5 w-full border border-cream-deeper bg-cream px-4 py-3 text-sm text-charcoal outline-none transition-colors focus:border-navy"
       />
     </div>
   );

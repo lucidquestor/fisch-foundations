@@ -3,19 +3,21 @@ import { Button } from "@/components/ui/Button";
 
 export function CtaBanner() {
   return (
-    <section className="border-y border-brand-200 bg-brand-950 text-white">
-      <div className="container-narrow section-padding text-center">
-        <h2 className="font-display text-3xl font-semibold md:text-4xl">
-          Ready to Break Ground?
-        </h2>
-        <p className="mx-auto mt-4 max-w-xl text-brand-300">
-          Let&apos;s discuss your project — we respond within 24 hours.
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button href="#contact" variant="secondary">
+    <section className="bg-navy px-5 py-14 md:px-10 lg:px-16">
+      <div className="container-site grid items-center gap-8 lg:grid-cols-2">
+        <div>
+          <h2 className="font-display text-[clamp(2rem,4vw,3rem)] tracking-wide text-ivory">
+            Ready to Break Ground?
+          </h2>
+          <p className="mt-3 font-serif text-lg italic text-ivory/60">
+            Let&apos;s discuss your project — we respond within 24 hours.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+          <Button href="#contact" variant="ivory-solid">
             Request an Estimate
           </Button>
-          <Button href={siteConfig.phoneHref} variant="outline" className="!border-brand-600 !text-white hover:!bg-brand-800">
+          <Button href={siteConfig.phoneHref} variant="ghost-white">
             Call Us Directly
           </Button>
         </div>

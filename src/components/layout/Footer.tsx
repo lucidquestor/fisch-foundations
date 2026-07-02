@@ -5,60 +5,30 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-brand-200 bg-brand-950 text-brand-100">
-      <div className="container-narrow section-padding !py-14">
-        <div className="grid gap-10 md:grid-cols-3">
-          <div>
-            <p className="font-display text-xl font-semibold text-white">
-              Fisch Foundations
-            </p>
-            <p className="mt-2 text-sm text-brand-300">{siteConfig.tagline}</p>
-            <p className="mt-4 text-sm leading-relaxed text-brand-400">
-              Licensed general contractor serving the tri-state area.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">
-              Navigation
-            </p>
-            <ul className="mt-4 space-y-2">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-brand-200 transition-colors hover:text-white"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">
-              Contact
-            </p>
-            <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <Link href={siteConfig.phoneHref} className="hover:text-white">
-                  {siteConfig.phone}
-                </Link>
-              </li>
-              <li>
-                <Link href={siteConfig.emailHref} className="hover:text-white">
-                  {siteConfig.email}
-                </Link>
-              </li>
-              <li className="text-brand-300">{siteConfig.serviceArea}</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-12 flex flex-col gap-2 border-t border-brand-800 pt-8 text-xs text-brand-500 md:flex-row md:items-center md:justify-between">
-          <p>© {year} Fisch Foundations. All rights reserved.</p>
-          <p>{siteConfig.license} · {siteConfig.insurance}</p>
+    <footer className="border-t-[3px] border-crimson bg-navy px-5 py-6 md:px-10 lg:px-16">
+      <div className="container-site flex flex-col items-center justify-between gap-4 md:flex-row">
+        <p className="font-display text-lg tracking-wide text-ivory/90">
+          FISCH FOUNDATIONS
+        </p>
+        <p className="text-[0.7rem] tracking-wide text-ivory/35">
+          © {year} Fisch Foundations LLC · All rights reserved
+        </p>
+        <div className="flex flex-wrap justify-center gap-6">
+          {navLinks.slice(0, 3).map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-[0.68rem] uppercase tracking-[0.12em] text-ivory/40 transition-colors hover:text-ivory"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            href={siteConfig.phoneHref}
+            className="text-[0.68rem] uppercase tracking-[0.12em] text-ivory/40 transition-colors hover:text-ivory"
+          >
+            Contact
+          </Link>
         </div>
       </div>
     </footer>

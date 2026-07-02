@@ -2,9 +2,10 @@ import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
   eyebrow?: string;
-  title: string;
+  title: React.ReactNode;
   description?: string;
   align?: "left" | "center";
+  dark?: boolean;
   className?: string;
 };
 
@@ -13,26 +14,44 @@ export function SectionHeading({
   title,
   description,
   align = "left",
+  dark = false,
   className,
 }: SectionHeadingProps) {
   return (
     <div
       className={cn(
-        "mb-12 max-w-2xl",
+        "mb-10 max-w-2xl",
         align === "center" && "mx-auto text-center",
         className,
       )}
     >
       {eyebrow && (
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent-dark">
+        <p
+          className={cn(
+            "section-tag",
+            dark && "text-gold-light before:bg-gold-light",
+            align === "center" && "justify-center",
+          )}
+        >
           {eyebrow}
         </p>
       )}
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-brand-950 md:text-4xl lg:text-5xl">
+      <h2
+        className={cn(
+          "section-title",
+          dark && "text-ivory",
+        )}
+      >
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-brand-700 md:text-lg">
+        <p
+          className={cn(
+            "section-intro",
+            dark && "text-stone-lighter/80",
+            align === "center" && "mx-auto",
+          )}
+        >
           {description}
         </p>
       )}
